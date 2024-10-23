@@ -18,11 +18,6 @@
                     <a class="nav-link" href="/ventas">Ventas</a>
                 {% endif %}
                 {% if session.get('usuario_id') %}
-                    <a class="nav-link" href="/logout">Cerrar Sesión</a>
-                {% else %}
-                    <a class="nav-link" href="/login">Iniciar Sesión</a>
-                {% endif %}
-                {% if session.get('usuario_id') %}
                     {% if session.get('es_admin') %}
                         <a class="nav-link" href="/admin/usuarios">Gestionar Usuarios</a>
                     {% endif %}
