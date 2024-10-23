@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Registro de Ventas</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venta in ventas %}
+        <tr>
+            <td>{{ venta.fecha.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            <td>{{ venta.producto.nombre }}</td>
+            <td>{{ venta.cantidad }}</td>
+            <td>${{ venta.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

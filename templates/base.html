@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de la Esquina</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Tienda de la Esquina</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Inicio</a>
+                {% if session.get('es_admin') %}
+                    <a class="nav-link" href="/producto/nuevo">Nuevo Producto</a>
+                    <a class="nav-link" href="/inventario">Inventario</a>
+                    <a class="nav-link" href="/ventas">Ventas</a>
+                {% endif %}
+                {% if session.get('usuario_id') %}
+                    <a class="nav-link" href="/logout">Cerrar Sesión</a>
+                {% else %}
+                    <a class="nav-link" href="/login">Iniciar Sesión</a>
+                {% endif %}
+                {% if session.get('usuario_id') %}
+                    {% if session.get('es_admin') %}
+                        <a class="nav-link" href="/admin/usuarios">Gestionar Usuarios</a>
+                    {% endif %}
+                    <a class="nav-link" href="/logout">Cerrar Sesión</a>
+                {% else %}
+                    <a class="nav-link" href="/login">Iniciar Sesión</a>
+                    <a class="nav-link" href="/registro">Registrarse</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block contenido %}{% endblock %}
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

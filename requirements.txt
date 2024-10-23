@@ -1,0 +1,7 @@
+Windows:
+pip install flask flask-sqlalchemy werkzeug
+Macos:
+pip3 install flask flask-sqlalchemy werkzeug
+Linux:
+gestor-de-paquetes install python-flask python-flask-sqlalchemy python-werkzeug
+
